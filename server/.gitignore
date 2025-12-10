@@ -9,3 +9,6 @@ venv/
 
 # Python cache
 __pycache__/
+
+# Screenshots folder excluded
+screenshots/
