@@ -1,16 +1,50 @@
-# remotesync
+# RemoteSync
 
-Seamlessly control and access your PC from anywhere in real time.
+<div align="center">
 
-## Getting Started
+**Seamlessly control and access your PC from anywhere in real time**
 
-This project is a starting point for a Flutter application.
+[![Flutter](https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white)](https://flutter.dev)
+[![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
+[![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
 
-A few resources to get you started if this is your first Flutter project:
+*Cross-platform remote desktop solution built for the modern era*
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+[Features](#-features) • [Installation](#-installation) • [Usage](#-usage) • [Tech Stack](#-tech-stack) • [Contributing](#-contributing)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+</div>
+
+---
+
+## ✨ Features
+
+- **Real-time Control** — Access and control your PC instantly from anywhere
+- **Cross-Platform** — Works seamlessly on mobile (iOS/Android) and Windows
+- **Responsive Design** — Optimized UI for both mobile devices and desktop applications
+- **Fast & Secure** — Built with FastAPI for high-performance backend operations
+- **Modern UI** — Beautiful, intuitive interface crafted with Flutter
+
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend:** Flutter (Mobile & Desktop)
+- **Backend:** FastAPI (Python)
+- **Architecture:** RESTful API with real-time synchronization
+
+---
+
+## 📱 Screenshots
+
+<p align="center">
+  <img src="https://github.com/pdshah09/RemoteSync/blob/main/screenshots/1.png" width="20%" />
+  <img src="https://github.com/pdshah09/RemoteSync/blob/main/screenshots/2.png" width="20%" />
+  <img src="https://github.com/pdshah09/RemoteSync/blob/main/screenshots/3.png" width="20%" />
+  <img src="https://github.com/pdshah09/RemoteSync/blob/main/screenshots/4.png" width="20%" />
+</p>
+
+---
+
+<div align="center">
+Made with ❤️ using Flutter & FastAPI
+</div>
