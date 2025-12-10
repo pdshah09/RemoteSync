@@ -1,8 +1,8 @@
 class ResponsiveHelper {
   static int getSystemPowerColumns(double width) {
     if (width >= 900) return 8;
-    if (width >= 600) return 4;
-    return 4;
+    if (width >= 600) return 2;
+    return 2;
   }
 
   static int getMediaColumns(double width) {

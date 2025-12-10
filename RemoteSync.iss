@@ -38,7 +38,7 @@ DisableProgramGroupPage=yes
 ;PrivilegesRequired=lowest
 OutputDir=C:\Users\Admin\Documents
 OutputBaseFilename=RemoteSync
-SetupIconFile=D:\Android\AndroidStudioProjects\RemoteSync\assets\icon\remotesync.png
+SetupIconFile=D:\Android\AndroidStudioProjects\RemoteSync\assets\icon\remotesync.ico
 SolidCompression=yes
 WizardStyle=modern dynamic
 

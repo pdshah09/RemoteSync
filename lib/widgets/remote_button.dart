@@ -15,7 +15,7 @@ class RemoteButton extends StatelessWidget {
     required this.backgroundColor,
     this.onPressed,
     this.iconSize = 24,
-    this.fontSize = 11,
+    this.fontSize = 15,
   });
 
   @override

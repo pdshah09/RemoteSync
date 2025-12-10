@@ -1,9 +1,15 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:remotesync/screens/splash.dart';
 import 'screens/pc_remote_control_screen.dart';
 import 'theme/app_colors.dart';
 
-void main() => runApp(const PCRemoteApp());
+void main() {
+
+  runApp(const PCRemoteApp());
+  
+}
 
 class PCRemoteApp extends StatelessWidget {
   const PCRemoteApp({super.key});

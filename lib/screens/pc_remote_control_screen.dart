@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:remotesync/widgets/appBar.dart';
 import '../services/remote_api_services.dart';
 import '../widgets/remote_button.dart';
 import '../widgets/large_utility_button.dart';
@@ -12,11 +13,7 @@ class PCRemoteControlScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('PC Remote Control'),
-        backgroundColor: Colors.deepPurpleAccent,
-        elevation: 0,
-      ),
+      appBar: appBar(),
       body: LayoutBuilder(
         builder: (context, constraints) {
           final width = constraints.maxWidth;
@@ -30,7 +27,7 @@ class PCRemoteControlScreen extends StatelessWidget {
                   left: padding,
                   right: padding,
                   top: padding,
-                  bottom: padding * 2,  // NEW: Extra bottom padding
+                  bottom: padding * 2,
                 ),
                 child: Column(
                   children: [
