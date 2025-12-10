@@ -39,9 +39,12 @@
 <p align="center">
   <img src="https://github.com/pdshah09/RemoteSync/blob/main/screenshots/1.png" width="20%" />
   <img src="https://github.com/pdshah09/RemoteSync/blob/main/screenshots/2.png" width="20%" />
-  <img src="https://github.com/pdshah09/RemoteSync/blob/main/screenshots/3.png" width="20%" />
-  <img src="https://github.com/pdshah09/RemoteSync/blob/main/screenshots/4.png" width="20%" />
+  <span style="vertical-align: middle;">
+    <img src="https://github.com/pdshah09/RemoteSync/blob/main/screenshots/3.png" width="20%" />
+    <img src="https://github.com/pdshah09/RemoteSync/blob/main/screenshots/4.png" width="20%" />
+  </span>
 </p>
+
 
 ---
 
