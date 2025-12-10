@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PC Remote</title>
+    <style>
+        :root {
+            --bg-color: #1c1c1e;
+            --card-color: #2c2c2e;
+            --primary-color: #007aff;
+            --danger-color: #ff3b30;
+            --text-color: #f2f2f7;
+            --text-secondary-color: #8e8e93;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--card-color);
+            padding-bottom: 1rem;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+        }
+
+        .control-section {
+            background-color: var(--card-color);
+            border-radius: 12px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .control-section h2 {
+            margin-top: 0;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-secondary-color);
+        }
+
+        .grid-controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+        }
+
+        .control-button, .control-link {
+            background-color: #3a3a3c;
+            color: var(--text-color);
+            border: none;
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+            text-decoration: none;
+            min-height: 80px;
+        }
+
+        .control-button:active, .control-link:active {
+            transform: scale(0.96);
+        }
+        
+        .control-button:hover, .control-link:hover {
+            background-color: #4a4a4c;
+        }
+
+        .control-button.danger { background-color: #5c1f1b; }
+        .control-button.danger:hover { background-color: #7d2a24; }
+        
+        .control-button svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--text-color);
+        }
+
+        #status {
+            text-align: center;
+            margin-top: 2rem;
+            font-style: italic;
+            color: var(--text-secondary-color);
+            height: 20px;
+            transition: color 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>PC Remote Control</h1>
+        </header>
+
+        <main>
+            <!-- System Controls Section -->
+            <section class="control-section">
+                <h2>System Power</h2>
+                <div class="grid-controls">
+                    <button class="control-button" onclick="sendCommand('/system/lock', 'POST')">
+                        <svg viewBox="0 0 24 24"><path d="M12 17a2 2 0 0 0 2-2 2 2 0 0 0-2-2 2 2 0 0 0-2 2 2 2 0 0 0 2 2m6-9a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V10a2 2 0 0 1 2-2h1V6a5 5 0 0 1 5-5 5 5 0 0 1 5 5v2h1m-6-5a3 3 0 0 0-3 3v2h6V6a3 3 0 0 0-3-3Z"/></svg>
+                        <span>Lock</span>
+                    </button>
+                    <button class="control-button" onclick="sendCommand('/system/sleep', 'POST')">
+                        <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-3.3 19.4c.1.1.2.1.3.1.2 0 .4-.1.5-.2a.7.7 0 0 0 .1-.9 7.8 7.8 0 0 1 0-7.8.7.7 0 0 0-.6-1.1.7.7 0 0 0-.5.1 8.6 8.6 0 0 0-2.9 1.8A10 10 0 1 0 12 2Z"/></svg>
+                        <span>Sleep</span>
+                    </button>
+                    <button class="control-button danger" onclick="confirmAndSendCommand('/system/reboot', 'POST', 'reboot')">
+                        <svg viewBox="0 0 24 24"><path d="M12 4a8 8 0 0 0-8 8h3l-4 4-4-4h3a11 11 0 1 1 3.08 7.42L8.5 17.9A9 9 0 1 0 12 4Z"/></svg>
+                        <span>Reboot</span>
+                    </button>
+                    <button class="control-button danger" onclick="confirmAndSendCommand('/system/shutdown', 'POST', 'shut down')">
+                        <svg viewBox="0 0 24 24"><path d="M13 3h-2v10h2V3m4.83 2.17a9 9 0 1 0-11.66 0A1 1 0 0 0 7.59 6.59a7 7 0 1 1 8.82 0a1 1 0 0 0 1.42-1.42Z"/></svg>
+                        <span>Shutdown</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Media Controls Section -->
+            <section class="control-section">
+                <h2>Media</h2>
+                <div class="grid-controls">
+                    <button class="control-button" onclick="sendCommand('/media/volumeup', 'POST')">
+                        <svg viewBox="0 0 24 24"><path d="M14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4-.91 7-4.49 7-8.77c0-4.28-3-7.86-7-8.77M16.5 12c0-1.77-1-3.29-2.5-4.03v8.05c1.5-.73 2.5-2.25 2.5-4.02M3 9v6h4l5 5V4L7 9H3Z"/></svg>
+                        <span>Vol Up</span>
+                    </button>
+                    <button class="control-button" onclick="sendCommand('/media/prevtrack', 'POST')">
+                        <svg viewBox="0 0 24 24"><path d="M6 6h2v12H6m3.5 6 8.5-6-8.5-6v12Z"/></svg>
+                        <span>Previous</span>
+                    </button>
+                    <button class="control-button" onclick="sendCommand('/media/playpause', 'POST')">
+                        <svg viewBox="0 0 24 24"><path d="M8 5.14v14l11-7L8 5.14Z"/></svg>
+                        <span>Play/Pause</span>
+                    </button>
+                    <button class="control-button" onclick="sendCommand('/media/nexttrack', 'POST')">
+                         <svg viewBox="0 0 24 24"><path d="M16 6h2v12h-2m-4.5 6 8.5-6-8.5-6v12Z"/></svg>
+                        <span>Next</span>
+                    </button>
+                    <button class="control-button" onclick="sendCommand('/media/volumedown', 'POST')">
+                        <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3m13.5 3c0-1.77-1-3.29-2.5-4.03v8.05c1.5-.73 2.5-2.25 2.5-4.02Z"/></svg>
+                        <span>Vol Down</span>
+                    </button>
+                     <button class="control-button" onclick="sendCommand('/media/volumemute', 'POST')">
+                        <svg viewBox="0 0 24 24"><path d="M3 9h4l5-5v16l-5-5H3V9m13.58 3l2.83 2.83-1.42 1.42L15.17 13.4l-2.83 2.83-1.42-1.42L13.76 12l-2.83-2.83 1.42-1.42L15.17 10.6l2.83-2.83 1.42 1.42L16.58 12Z"/></svg>
+                        <span>Mute</span>
+                    </button>
+                </div>
+            </section>
+            
+            <!-- Application & Utility Section -->
+            <section class="control-section">
+                <h2>Utilities</h2>
+                 <div class="grid-controls">
+                    <button class="control-button" onclick="sendCommand('/app/browser', 'POST')">
+                        <svg viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10a10 10 0 0 0 10-10A10 10 0 0 0 12 2m0 18a8 8 0 0 1-8-8a8 8 0 0 1 8-8a8 8 0 0 1 8 8a8 8 0 0 1-8 8m-4-8.5a1.5 1.5 0 1 1 0 3a1.5 1.5 0 0 1 0-3m4.5 0a1.5 1.5 0 1 1 0 3a1.5 1.5 0 0 1 0-3m4.5 0a1.5 1.5 0 1 1 0 3a1.5 1.5 0 0 1 0-3Z"/></svg>
+                        <span>Browser</span>
+                    </button>
+                    <a class="control-link" href="/action/screenshot" target="_blank">
+                       <svg viewBox="0 0 24 24"><path d="M4 4h3l2-2h6l2 2h3a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2m8 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z"/></svg>
+                       <span>Screenshot</span>
+                    </a>
+                 </div>
+            </section>
+        </main>
+        
+        <p id="status">Select an action.</p>
+    </div>
+
+    <script>
+        const API_BASE_URL = '{{API_BASE_URL}}'; // Injected by Python server
+        const statusElement = document.getElementById('status');
+
+        async function sendCommand(endpoint, method) {
+            statusElement.textContent = `Sending command...`;
+            try {
+                const response = await fetch(API_BASE_URL + endpoint, { method: method });
+                const result = await response.json();
+
+                if (response.ok) {
+                    statusElement.textContent = `Success: ${result.message}`;
+                } else {
+                    statusElement.textContent = `Error: ${result.detail}`;
+                }
+            } catch (error) {
+                statusElement.textContent = 'Failed to connect to the server.';
+                console.error('Error:', error);
+            }
+        }
+
+        function confirmAndSendCommand(endpoint, method, actionName) {
+            if (confirm(`Are you sure you want to ${actionName} the PC?`)) {
+                sendCommand(endpoint, method);
+            }
+        }
+    </script>
+</body>
+</html>
