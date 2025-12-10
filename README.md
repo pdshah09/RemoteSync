@@ -10,8 +10,6 @@
 
 *Cross-platform remote desktop solution built for the modern era*
 
-[Features](#-features) • [Installation](#-installation) • [Usage](#-usage) • [Tech Stack](#-tech-stack) • [Contributing](#-contributing)
-
 </div>
 
 ---
