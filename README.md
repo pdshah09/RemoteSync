@@ -34,11 +34,11 @@
 
 ## 📱 Screenshots
 
-<div style="display: flex; justify-content: center; align-items: center;">
-  <img src="https://github.com/pdshah09/RemoteSync/blob/main/screenshots/1.png" width="20%" />
-  <img src="https://github.com/pdshah09/RemoteSync/blob/main/screenshots/2.png" width="20%" />
-  <img src="https://github.com/pdshah09/RemoteSync/blob/main/screenshots/3.png" width="20%" />
-  <img src="https://github.com/pdshah09/RemoteSync/blob/main/screenshots/4.png" width="20%" />
+<div style="text-align: center;">
+  <img src="https://github.com/pdshah09/RemoteSync/blob/main/screenshots/1.png" width="20%" style="vertical-align: middle;" />
+  <img src="https://github.com/pdshah09/RemoteSync/blob/main/screenshots/2.png" width="20%" style="vertical-align: middle;" />
+  <img src="https://github.com/pdshah09/RemoteSync/blob/main/screenshots/3.png" width="20%" style="vertical-align: middle;" />
+  <img src="https://github.com/pdshah09/RemoteSync/blob/main/screenshots/4.png" width="20%" style="vertical-align: middle;" />
 </div>
 
 ---
