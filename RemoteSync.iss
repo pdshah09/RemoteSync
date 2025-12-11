@@ -6,7 +6,7 @@
 #define MyAppVersion "1.5"
 #define MyAppPublisher "SkiaTech"
 #define MyAppURL "https://pdshah09.github.io/portfolio/"
-#define MyAppExeName "remotesync.exe"
+#define MyAppExeName "RemoteSync.exe"
 #define MyAppAssocName MyAppName + " File"
 #define MyAppAssocExt ".myp"
 #define MyAppAssocKey StringChange(MyAppAssocName, " ", "") + MyAppAssocExt

@@ -31,11 +31,13 @@ class PCRemoteControlScreen extends StatelessWidget {
                 ),
                 child: Column(
                   children: [
-                    _buildSystemPowerSection(width),
+
+                    _buildSystemPowerSection(context, width),
                     SizedBox(height: padding),
                     _buildMediaSection(width),
                     SizedBox(height: padding),
                     _buildUtilitiesSection(width),
+
                   ],
                 ),
               ),
@@ -46,7 +48,7 @@ class PCRemoteControlScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildSystemPowerSection(double width) {
+  Widget _buildSystemPowerSection(BuildContext context, double width) {
     final columns = ResponsiveHelper.getSystemPowerColumns(width);
     final spacing = ResponsiveHelper.getSpacing(width);
 
@@ -63,25 +65,29 @@ class PCRemoteControlScreen extends StatelessWidget {
             icon: Icons.lock,
             label: 'Lock',
             backgroundColor: AppColors.standardButton,
-            onPressed: () => RemoteApiService.systemControl('lock'),
+            onPressedAsync: () => RemoteApiService.systemControl('lock'),
+            errorTitle: 'System Control Failed',
           ),
           RemoteButton(
             icon: Icons.circle,
             label: 'Sleep',
             backgroundColor: AppColors.standardButton,
-            onPressed: () => RemoteApiService.systemControl('sleep'),
+            onPressedAsync: () => RemoteApiService.systemControl('sleep'),
+            errorTitle: 'System Control Failed',
           ),
           RemoteButton(
             icon: Icons.refresh,
             label: 'Reboot',
             backgroundColor: AppColors.criticalButton,
-            onPressed: () => RemoteApiService.systemControl('reboot'),
+            onPressedAsync: () => RemoteApiService.systemControl('reboot'),
+            errorTitle: 'System Control Failed',
           ),
           RemoteButton(
             icon: Icons.power_settings_new,
             label: 'Shutdown',
             backgroundColor: AppColors.criticalButton,
-            onPressed: () => RemoteApiService.systemControl('shutdown'),
+            onPressedAsync: () => RemoteApiService.systemControl('shutdown'),
+            errorTitle: 'System Control Failed',
           ),
         ],
       ),

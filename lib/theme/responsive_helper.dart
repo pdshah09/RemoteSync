@@ -1,8 +1,10 @@
+import 'package:flutter/material.dart';
+
 class ResponsiveHelper {
   static int getSystemPowerColumns(double width) {
     if (width >= 900) return 8;
-    if (width >= 600) return 2;
-    return 2;
+    if (width >= 600) return 3;
+    return 3;
   }
 
   static int getMediaColumns(double width) {
@@ -29,4 +31,19 @@ class ResponsiveHelper {
     if (width >= 600) return 160;
     return 200;  // Taller on mobile
   }
+
+  // Add these methods to ResponsiveHelper class
+  static EdgeInsets getDialogInsetPadding(double width) {
+    if (width >= 900) return const EdgeInsets.symmetric(horizontal: 40, vertical: 24);
+    if (width >= 600) return const EdgeInsets.symmetric(horizontal: 32, vertical: 20);
+    return const EdgeInsets.symmetric(horizontal: 16, vertical: 16);
+  }
+
+  static EdgeInsets getDialogContentPadding(double width) {
+    if (width >= 900) return const EdgeInsets.all(24);
+    if (width >= 600) return const EdgeInsets.all(20);
+    return const EdgeInsets.all(16);
+  }
+
+
 }

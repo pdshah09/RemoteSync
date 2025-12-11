@@ -1,0 +1,6 @@
+chcp 65001
+set PYTHONIOENCODING=utf-8
+pyinstaller main.py -i "D:\Android\AndroidStudioProjects\RemoteSync\assets\icon\remotesync.ico" --add-data "index.html;." -n RemoteServer -F --noconsole --clean
+
+
+pyinstaller main.py -i "D:\Android\AndroidStudioProjects\RemoteSync\assets\icon\remotesync.ico" --add-data "index.html;." -n RemoteServer -F --clean

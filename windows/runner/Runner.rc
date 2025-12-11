@@ -89,13 +89,13 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "com.remotesync.app" "\0"
-            VALUE "FileDescription", "remotesync" "\0"
+            VALUE "CompanyName", "SkiaTech" "\0"
+            VALUE "FileDescription", "RemoteSync" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "remotesync" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2025 com.remotesync.app. All rights reserved." "\0"
-            VALUE "OriginalFilename", "remotesync.exe" "\0"
-            VALUE "ProductName", "remotesync" "\0"
+            VALUE "InternalName", "RemoteSync" "\0"
+            VALUE "LegalCopyright", "Copyright © 2026" "\0"
+            VALUE "OriginalFilename", "RemoteServer.exe" "\0"
+            VALUE "ProductName", "RemoteSync" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

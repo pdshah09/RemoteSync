@@ -12,7 +12,7 @@ class appBar extends StatelessWidget implements PreferredSizeWidget{
               bottomRight: Radius.circular(25)
           )
       ),
-      title: const Text('PC Remote Control'),
+      title: const Text('RemoteSync',style: TextStyle(fontWeight: FontWeight.w600)),
       backgroundColor: Colors.deepPurpleAccent,
       elevation: 0,
     );
