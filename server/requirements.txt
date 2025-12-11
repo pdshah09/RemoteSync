@@ -1,3 +1,4 @@
+altgraph==0.17.5
 annotated-types==0.7.0
 anyio==4.9.0
 argon2-cffi==23.1.0
@@ -83,6 +84,7 @@ overrides==7.7.0
 packaging==24.2
 pandocfilters==1.5.1
 parso==0.8.4
+pefile==2024.8.26
 pillow==11.2.1
 platformdirs==4.3.7
 prometheus_client==0.21.1
@@ -97,6 +99,8 @@ pyenv-win==3.1.1
 pygame==2.6.1
 PyGetWindow==0.0.9
 Pygments==2.19.1
+pyinstaller==6.17.0
+pyinstaller-hooks-contrib==2025.10
 PyMsgBox==2.0.1
 pynvim==0.5.2
 pyperclip==1.11.0
@@ -108,6 +112,7 @@ python-json-logger==3.3.0
 python-multipart==0.0.20
 pytweening==1.2.0
 pywin32==310
+pywin32-ctypes==0.2.3
 pywinpty==2.0.15
 PyYAML==6.0.2
 pyzmq==26.4.0
