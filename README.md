@@ -14,9 +14,11 @@
 
 <div align="center">
 
-**📥 Desktop app**
 
-[![SourceForge Downloads](https://img.shields.io/sourceforge/dt/remotesync?style=for-the-badge)](https://sourceforge.net/projects/remotesync/)
+**📥 APP DOWNLOAD**
+
+Mobile App [![Play Store Downloads](https://PlayBadges.pavi2410.me/badge/downloads?id=com.example.app&style=for-the-badge)](https://github.com/pdshah09/RemoteSync/blob/main/RemoteSync.apk)
+Desktop App [![SourceForge Downloads](https://img.shields.io/sourceforge/dt/remotesync?style=for-the-badge)](https://sourceforge.net/projects/remotesync/)
 
 </div>
 ---
