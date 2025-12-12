@@ -10,6 +10,7 @@ from pathlib import Path
 import mss
 from datetime import datetime
 from dotenv import load_dotenv
+from datetime import datetime
 
 # sys.stdin.reconfigure(encoding='utf-8', errors='replace')
 # sys.stdout.reconfigure(encoding='utf-8', errors='replace')
@@ -32,6 +33,15 @@ screenshots_dir.mkdir(exist_ok=True)
 
 app = FastAPI()
 
+
+@app.get("/verify")
+def verify_connection():
+    return {
+        "status": "ok",
+        "timestamp": datetime.now().isoformat(),
+        "host": LOCAL_IP,
+        "port": PORT
+    }
 
 def get_local_ip():
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)

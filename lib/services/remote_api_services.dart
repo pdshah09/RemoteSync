@@ -69,10 +69,15 @@ class RemoteApiService {
 
   static Future<bool> _testUrl(String url) async {
     try {
-      final response = await http.get(Uri.parse(url)).timeout(
+      final response = await http.get(Uri.parse('$url/verify')).timeout(
         const Duration(milliseconds: 300),
       );
-      return response.statusCode == 200;
+
+      if (response.statusCode == 200) {
+        final data = jsonDecode(response.body);
+        return data['status'] == 'ok';
+      }
+      return false;
     } catch (_) {
       return false;
     }
