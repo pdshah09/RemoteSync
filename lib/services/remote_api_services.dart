@@ -69,6 +69,7 @@ class RemoteApiService {
 
   static Future<bool> _testUrl(String url) async {
     try {
+      print("${url}");
       final response = await http.get(Uri.parse('$url/verify')).timeout(
         const Duration(milliseconds: 300),
       );

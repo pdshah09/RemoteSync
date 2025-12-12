@@ -4,6 +4,7 @@ import uvicorn
 import socket
 import pyautogui
 import webbrowser
+from zeroconf import ServiceInfo, Zeroconf
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import HTMLResponse, FileResponse
 from pathlib import Path

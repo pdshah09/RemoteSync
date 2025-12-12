@@ -10,6 +10,7 @@ void main() async{
 
   // Start Python server on desktop platforms
   await RemoteApiService.startServer();
+  await RemoteApiService.baseUrl;
 
   runApp(const PCRemoteApp());
 
