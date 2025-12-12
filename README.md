@@ -17,7 +17,7 @@
 
 **📥 APP DOWNLOAD**
 
-Mobile App [![Play Store Downloads](https://PlayBadges.pavi2410.me/badge/downloads?id=com.example.app&style=for-the-badge)](https://github.com/pdshah09/RemoteSync/blob/main/RemoteSync.apk)
+Mobile App [![Get it on Google Play](https://img.shields.io/badge/Google_Play-414141?style=for-the-badge&logo=google-play&logoColor=white)](https://github.com/pdshah09/RemoteSync/raw/main/RemoteSync.apk)
 Desktop App [![SourceForge Downloads](https://img.shields.io/sourceforge/dt/remotesync?style=for-the-badge)](https://sourceforge.net/projects/remotesync/)
 
 </div>
