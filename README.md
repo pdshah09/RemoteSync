@@ -17,8 +17,6 @@
 **📥 Desktop app**
 
 [![SourceForge Downloads](https://img.shields.io/sourceforge/dt/remotesync?style=for-the-badge)](https://sourceforge.net/projects/remotesync/)
-[![SourceForge Project](https://img.shields.io/sourceforge/platform/remotesync?style=for-the-badge)](https://sourceforge.net/projects/remotesync/)
-
 
 </div>
 ---
