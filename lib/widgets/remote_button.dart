@@ -22,7 +22,7 @@ class RemoteButton extends StatelessWidget {
     this.errorTitle,
     this.iconSize = 24,
     this.fontSize = 15,
-    this.timeout = const Duration(seconds: 2),
+    this.timeout = const Duration(milliseconds: 4000),
   });
 
   Future<void> _handlePress(BuildContext context) async {

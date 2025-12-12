@@ -8,6 +8,7 @@ import 'package:path_provider/path_provider.dart';
 class RemoteApiService {
 
   static Process? _serverProcess;
+  static String? _cachedBaseUrl;
 
   static Future<void> startServer() async {
     if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
@@ -66,12 +67,69 @@ class RemoteApiService {
     }
   }
 
+  static Future<bool> _testUrl(String url) async {
+    try {
+      final response = await http.get(Uri.parse(url)).timeout(
+        const Duration(milliseconds: 300),
+      );
+      return response.statusCode == 200;
+    } catch (_) {
+      return false;
+    }
+  }
+
+  // Scan 192.168.x.x range to find server (parallel)
+  static Future<String?> _scanForServer() async {
+    for (int j = 0; j <= 255; j++) {
+      final futures = <Future<String?>>[];
+
+      for (int i = 1; i <= 254; i++) {
+        final url = 'http://192.168.$j.$i:8000';
+        futures.add(_testUrl(url).then((success) => success ? url : null));
+      }
+
+      final results = await Future.wait(futures);
+      final found = results.firstWhere((url) => url != null, orElse: () => null);
+      if (found != null) return found;
+    }
+
+    return null;
+  }
+
+
   // Auto-detect platform and return appropriate URL
-  static String get baseUrl {
+  static Future<String> get baseUrl async {
+    // Return cached URL if available
+    if (_cachedBaseUrl != null) {
+      return _cachedBaseUrl!;
+    }
+
+    // Original discovery logic
     if (Platform.isAndroid || Platform.isIOS) {
-      return 'http://192.168.1.2:8000';
+      const primaryUrl = 'http://192.168.1.2:8000';
+      if (await _testUrl(primaryUrl)) {
+        _cachedBaseUrl = primaryUrl;
+        return _cachedBaseUrl!;
+      }
+
+      final discovered = await _scanForServer();
+      if (discovered != null) {
+        _cachedBaseUrl = discovered;
+        return _cachedBaseUrl!;
+      }
+
+      _cachedBaseUrl = primaryUrl;
+      return _cachedBaseUrl!;
     } else {
-      return 'http://0.0.0.0:8000';
+      const primaryUrl = 'http://0.0.0.0:8000';
+      const fallbackUrl = 'http://127.0.0.1:8000';
+
+      if (await _testUrl(primaryUrl)) {
+        _cachedBaseUrl = primaryUrl;
+      } else {
+        _cachedBaseUrl = fallbackUrl;
+      }
+      return _cachedBaseUrl!;
     }
   }
 
@@ -79,8 +137,9 @@ class RemoteApiService {
 
   // System Power Controls
   static Future<void> systemControl(String action) async {
+    final url = await baseUrl;
     final response = await http.post(
-      Uri.parse('$baseUrl/system/$action'),
+      Uri.parse('$url/system/$action'),
     );
     if (response.statusCode != 200) {
       throw Exception('Failed: ${response.body}');
@@ -89,8 +148,9 @@ class RemoteApiService {
 
   // Media Controls
   static Future<void> mediaControl(String action) async {
+    final url = await baseUrl;
     final response = await http.post(
-      Uri.parse('$baseUrl/media/$action'),
+      Uri.parse('$url/media/$action'),
     );
     if (response.statusCode != 200) {
       throw Exception('Failed: ${response.body}');
@@ -99,8 +159,9 @@ class RemoteApiService {
 
   // Browser
   static Future<void> openBrowser() async {
+    final url = await baseUrl;
     final response = await http.post(
-      Uri.parse('$baseUrl/app/browser'),
+      Uri.parse('$url/app/browser'),
     );
     if (response.statusCode != 200) {
       throw Exception('Failed: ${response.body}');
@@ -109,8 +170,9 @@ class RemoteApiService {
 
   // Screenshot
   static Future<void> takeScreenshot() async {
+    final url = await baseUrl;
     final response = await http.get(
-      Uri.parse('$baseUrl/action/screenshot'),
+      Uri.parse('$url/action/screenshot'),
     );
     if (response.statusCode != 200) {
       throw Exception('Failed: ${response.body}');

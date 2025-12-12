@@ -123,8 +123,55 @@ def open_browser():
 
 
 if __name__ == "__main__":
+    def is_port_available(host, port):
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        try:
+            sock.bind((host, port))
+            sock.close()
+            return True
+        except:
+            return False
+
+    def find_free_port(start_port):
+        port = start_port
+        while port < 65535:
+            if is_port_available("127.0.0.1", port):
+                return port
+            port += 1
+        raise RuntimeError("No free ports available")
+
+    # HOST priority: .env → 0.0.0.0 → LOCAL_IP → 127.0.0.1
+    host_candidates = [
+        HOST,               # from .env
+        "0.0.0.0",
+        LOCAL_IP,
+        "127.0.0.1",
+    ]
+
+    port = PORT
+    if not is_port_available("0.0.0.0", port):
+        port = find_free_port(port)
+
+    final_host = None
+    for h in host_candidates:
+        try:
+            test_sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            test_sock.bind((h, port))
+            test_sock.close()
+            final_host = h
+            break
+        except:
+            continue
+
+    if final_host is None:
+        raise RuntimeError("Unable to bind to any fallback hosts")
+
+    print("------------------------------------------------")
     print("PC Remote API is running!")
-    print(f"   Open this URL on your phone's browser:")
+    print(f"Host: {final_host}")
+    print(f"Port: {port}")
+    print(f"Open this URL on your phone:")
     print(f"   http://{LOCAL_IP}:{PORT}")
-    # uvicorn.run(app, host=HOST, port=PORT, log_config=None)
-    uvicorn.run(app, host=HOST, port=PORT)
+    print("------------------------------------------------")
+
+    uvicorn.run(app, host=final_host, port=port)
