@@ -18,7 +18,7 @@
 **📥 APP DOWNLOAD**
 
 Mobile App [![Get it on Google Play](https://img.shields.io/badge/Google_Play-414141?style=for-the-badge&logo=google-play&logoColor=white)](https://github.com/pdshah09/RemoteSync/raw/main/RemoteSync.apk)
-Desktop App [![SourceForge Downloads](https://img.shields.io/sourceforge/dt/remotesync?style=for-the-badge)](https://sourceforge.net/projects/remotesync/)
+Desktop App [![Downloads](https://img.shields.io/sourceforge/dt/remotesync)](https://github.com/pdshah09/RemoteSync/blob/main/RemoteSync.exe)
 
 **[<img src="https://avatars.githubusercontent.com/qtremors" width="60" height="60" style="border-radius:50% !important; vertical-align:middle;"/>](https://github.com/qtremors)
 &nbsp;[![GitHub](https://img.shields.io/badge/GitHub_Profile-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/qtremors) ❤️ Thanks For Your Contribution**
